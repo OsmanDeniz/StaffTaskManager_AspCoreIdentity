@@ -12,13 +12,17 @@
         <thead>
             <tr>
                 <th>Aciliyet Durumu</th>
+                <th>İşlemler</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.UrgancyLevel</td>
+                    <td>@item.UrgencyLevel</td>
+                    <td>
+                        <a asp-action="UpdateUrgency" asp-controller="Urgency" asp-route-id="@item.Id" class="btn btn-outline-warning btn-sm">Güncelle</a>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -26,12 +30,12 @@
 }
 else
 {
-<div class="text-center mt-4">
-    <p class="lead">
-        Sistemde kayitli aciliyet durumu bulunamadi.
-    </p>
-    <a asp-action="AddUrgency" asp-controller="Urgency" class="btn btn-sm btn-outline-info my-2"> Aciliyet Ekle</a>
-</div>
+    <div class="text-center mt-4">
+        <p class="lead">
+            Sistemde kayitli aciliyet durumu bulunamadi.
+        </p>
+        <a asp-action="AddUrgency" asp-controller="Urgency" class="btn btn-sm btn-outline-info my-2"> Aciliyet Ekle</a>
+    </div>
 }
 
 
