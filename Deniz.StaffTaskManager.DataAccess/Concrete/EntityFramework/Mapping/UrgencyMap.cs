@@ -8,7 +8,7 @@ namespace Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Mapping
     {
         public void Configure(EntityTypeBuilder<Urgency> builder)
         {
-            builder.Property(i => i.UrgancyLevel).HasMaxLength(50);
+            builder.Property(i => i.UrgencyLevel).HasMaxLength(50);
         }
     }
 }

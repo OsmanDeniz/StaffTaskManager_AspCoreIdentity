@@ -8,6 +8,6 @@ namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Models
     public class UrgencyListViewModel
     {
         public int Id { get; set; }
-        public string UrgancyLevel { get; set; }
+        public string UrgencyLevel { get; set; }
     }
 }
