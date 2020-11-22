@@ -7,7 +7,7 @@ using Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Mapping;
 namespace Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Contexts
 
 {
-    class TaskContext : IdentityDbContext<AppUser, AppRole, int>
+   public class TaskContext : IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
