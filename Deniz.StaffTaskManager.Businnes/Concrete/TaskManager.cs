@@ -8,7 +8,7 @@ using Deniz.StaffTaskManager.Entities.Concrete;
 
 namespace Deniz.StaffTaskManager.Businnes.Concrete
 {
-   public class TaskManager : ITaskService
+    public class TaskManager : ITaskService
     {
         private readonly ITaskDal _dal;
         public TaskManager(ITaskDal dal)
@@ -23,6 +23,11 @@ namespace Deniz.StaffTaskManager.Businnes.Concrete
         public List<Task> GetAll()
         {
             return _dal.GetAll();
+        }
+
+        public List<Task> GetAllUncompletedTasks()
+        {
+            return _dal.GetAllUncompletedTasks();
         }
 
         public Task GetById(int id)

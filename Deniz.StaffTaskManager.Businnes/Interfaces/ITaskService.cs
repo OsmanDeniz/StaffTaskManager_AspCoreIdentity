@@ -7,5 +7,6 @@ namespace Deniz.StaffTaskManager.Businnes.Interfaces
 {
   public  interface ITaskService : IGenericService<Task>
     {
+        List<Task> GetAllUncompletedTasks();
     }
 }

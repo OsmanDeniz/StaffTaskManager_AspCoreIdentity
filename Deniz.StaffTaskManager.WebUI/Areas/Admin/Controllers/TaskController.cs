@@ -20,7 +20,7 @@ namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
         public IActionResult Index()
         {
             TempData["active"] = "task";
-            List<Task> tasks = _taskService.GetAll();
+            List<Task> tasks = _taskService.GetAllUncompletedTasks();
             List<TaskListViewModel> models = new List<TaskListViewModel>();
             foreach (var item in tasks)
             {
