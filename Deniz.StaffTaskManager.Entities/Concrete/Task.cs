@@ -10,7 +10,7 @@ namespace Deniz.StaffTaskManager.Entities.Concrete
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Status { get; set; }
-        public DateTime Created_Date { get; set; }
+        public DateTime Created_Date { get; set; } = DateTime.Now;
 
         public int? AppUserId { get; set; }
         public AppUser AppUser { get; set; }
