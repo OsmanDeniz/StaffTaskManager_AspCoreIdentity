@@ -3,6 +3,7 @@ using Deniz.StaffTaskManager.Businnes.Interfaces;
 using Deniz.StaffTaskManager.Entities.Concrete;
 using Deniz.StaffTaskManager.WebUI.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
@@ -54,6 +55,41 @@ namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
                 {
                     Description = model.Description,
                     Name = model.Name,
+                    UrgencyId = model.UrgencyId
+                });
+                return RedirectToAction("index");
+            }
+            return View(model);
+        }
+
+        public IActionResult UpdateTask(int id)
+        {
+            TempData["active"] = "task";
+            var task = _taskService.GetById(id);
+            TaskUpdateViewModel model = new TaskUpdateViewModel
+            {
+                Id = task.Id,
+                Name = task.Name,
+                Description = task.Description,
+                UrgencyId = task.UrgencyId
+            };
+
+            ViewBag.Urgencies = new SelectList(_urgencyService.GetAll(), "Id", "UrgencyLevel", task.UrgencyId);
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult UpdateTask(TaskUpdateViewModel model)
+        {
+            TempData["active"] = "task";
+            ViewBag.Urgencies = new SelectList(_urgencyService.GetAll(), "Id", "UrgencyLevel", model.UrgencyId);
+
+            if (ModelState.IsValid)
+            {
+                _taskService.Update(new Task
+                {
+                    Id = model.Id,
+                    Name = model.Name,
+                    Description = model.Description,
                     UrgencyId = model.UrgencyId
                 });
                 return RedirectToAction("index");
