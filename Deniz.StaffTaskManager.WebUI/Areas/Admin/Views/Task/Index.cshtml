@@ -23,7 +23,7 @@
                 <td>@item.Urgency.UrgencyLevel</td>
                 <td>
                     <a class="btn btn-outline-warning" asp-action="UpdateTask" asp-route-id="@item.Id">Duzenle</a>
-                    <a class="btn btn-outline-danger">Sil</a>
+                    <a class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal" data-someting="@item.Id">Sil</a>
                 </td>
             </tr>
         }
@@ -37,4 +37,53 @@ else
         </p>
         <a asp-action="AddTask" class="btn btn-outline-info btn-sm">Gorev Olustur</a>
     </div>
+}
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kritik Uyari</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Silmek istediginize emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayir</button>
+                <button type="button" class="btn btn-primary" id="btnDelete">Evet, Sil!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section JS{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#deleteModal").on("show.bs.modal", function (event) {
+                let triggedElement = $(event.relatedTarget);
+                let id = triggedElement.data("someting");
+
+                $("#btnDelete").click(function () {
+                    $.ajax({
+                        type: "Get",
+                        url: "./Task/RemoveTask",
+                        data: { id: id },
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8;",
+                        success: function () {
+                            window.location.reload();
+                        },
+                        error: function (error) {
+                            alert(error.statusText);
+                        }
+                    });
+                });
+            })
+        });
+    </script>
+
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Deniz.StaffTaskManager.Businnes.Interfaces;
 using Deniz.StaffTaskManager.Entities.Concrete;
 using Deniz.StaffTaskManager.WebUI.Areas.Admin.Models;
@@ -95,6 +96,12 @@ namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
                 return RedirectToAction("index");
             }
             return View(model);
+        }
+
+        public IActionResult RemoveTask(int id)
+        {
+            _taskService.Remove(new Task { Id = id });
+            return Json(null);
         }
     }
 }
