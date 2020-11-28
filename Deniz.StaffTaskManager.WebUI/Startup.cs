@@ -52,7 +52,6 @@ namespace Deniz.StaffTaskManager.WebUI
                 opt.Cookie.HttpOnly = true;
                 opt.ExpireTimeSpan = TimeSpan.FromDays(7);
                 opt.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.SameAsRequest;
-                opt.LoginPath = "Home/Index";
             });
         }
 
@@ -67,6 +66,8 @@ namespace Deniz.StaffTaskManager.WebUI
             app.UseRouting();
             IdentitiyInitializer.SeedData(user, role).Wait();
             app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
