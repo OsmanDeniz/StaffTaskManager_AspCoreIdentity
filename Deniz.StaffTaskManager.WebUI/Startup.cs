@@ -1,3 +1,4 @@
+using System;
 using Deniz.StaffTaskManager.Businnes.Concrete;
 using Deniz.StaffTaskManager.Businnes.Interfaces;
 using Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Contexts;
@@ -44,6 +45,15 @@ namespace Deniz.StaffTaskManager.WebUI
             }).AddEntityFrameworkStores<TaskContext>();
 
             services.AddControllersWithViews();
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.Cookie.Name = "authCookie";
+                opt.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Strict;
+                opt.Cookie.HttpOnly = true;
+                opt.ExpireTimeSpan = TimeSpan.FromDays(7);
+                opt.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.SameAsRequest;
+                opt.LoginPath = "Home/Index";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
