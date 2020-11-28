@@ -6,6 +6,7 @@ using Deniz.StaffTaskManager.DataAccess.Interfaces;
 using Deniz.StaffTaskManager.Entities.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -33,13 +34,20 @@ namespace Deniz.StaffTaskManager.WebUI
             /// - DbContext ayari
             /// - Identity ayari = appuser ve approle'u entityframeworke taskcontexti kullanarak ekle
             services.AddDbContext<TaskContext>();
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<TaskContext>();
+            services.AddIdentity<AppUser, AppRole>(opt =>
+            {
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequiredLength = 4;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<TaskContext>();
 
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> user, RoleManager<AppRole> role)
         {
             if (env.IsDevelopment())
             {
@@ -47,6 +55,7 @@ namespace Deniz.StaffTaskManager.WebUI
             }
 
             app.UseRouting();
+            IdentitiyInitializer.SeedData(user, role).Wait();
             app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
