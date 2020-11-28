@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Repositories
 {
-    public class EfTaskRepository : EfGenericRepository<Task>, ITaskDal
+    public class EfTaskRepository : EfGenericRepository<Task_Entity>, ITaskDal
     {
-        public List<Task> GetAllUncompletedTasks()
+        public List<Task_Entity> GetAllUncompletedTasks()
         {
             using (var context = new TaskContext())
             {

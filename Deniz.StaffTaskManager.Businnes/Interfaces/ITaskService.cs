@@ -5,8 +5,8 @@ using Deniz.StaffTaskManager.Entities.Concrete;
 
 namespace Deniz.StaffTaskManager.Businnes.Interfaces
 {
-  public  interface ITaskService : IGenericService<Task>
+  public  interface ITaskService : IGenericService<Task_Entity>
     {
-        List<Task> GetAllUncompletedTasks();
+        List<Task_Entity> GetAllUncompletedTasks();
     }
 }

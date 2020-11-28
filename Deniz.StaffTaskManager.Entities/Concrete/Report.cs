@@ -10,7 +10,7 @@ namespace Deniz.StaffTaskManager.Entities.Concrete
         public string ReportDetails { get; set; }
 
         public int TaskId { get; set; }
-        public Task Task { get; set; }
+        public Task_Entity Task { get; set; }
 
     }
 }

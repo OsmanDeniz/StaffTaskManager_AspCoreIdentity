@@ -3,8 +3,8 @@ using Deniz.StaffTaskManager.Entities.Concrete;
 
 namespace Deniz.StaffTaskManager.DataAccess.Interfaces
 {
-    public interface ITaskDal : IGenericDal<Task>
+    public interface ITaskDal : IGenericDal<Task_Entity>
     {
-        List<Task> GetAllUncompletedTasks();
+        List<Task_Entity> GetAllUncompletedTasks();
     }
 }

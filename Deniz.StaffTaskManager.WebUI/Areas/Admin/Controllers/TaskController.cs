@@ -22,7 +22,7 @@ namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
         public IActionResult Index()
         {
             TempData["active"] = "task";
-            List<Task> tasks = _taskService.GetAllUncompletedTasks();
+            List<Task_Entity> tasks = _taskService.GetAllUncompletedTasks();
             List<TaskListViewModel> models = new List<TaskListViewModel>();
             foreach (var item in tasks)
             {
@@ -52,7 +52,7 @@ namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
             TempData["active"] = "task";
             if (ModelState.IsValid)
             {
-                _taskService.Add(new Task
+                _taskService.Add(new Task_Entity
                 {
                     Description = model.Description,
                     Name = model.Name,
@@ -86,7 +86,7 @@ namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                _taskService.Update(new Task
+                _taskService.Update(new Task_Entity
                 {
                     Id = model.Id,
                     Name = model.Name,
@@ -100,7 +100,7 @@ namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
 
         public IActionResult RemoveTask(int id)
         {
-            _taskService.Remove(new Task { Id = id });
+            _taskService.Remove(new Task_Entity { Id = id });
             return Json(null);
         }
     }

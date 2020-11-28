@@ -15,32 +15,32 @@ namespace Deniz.StaffTaskManager.Businnes.Concrete
         {
             _dal = dal;
         }
-        public void Add(Task table)
+        public void Add(Task_Entity table)
         {
             _dal.Add(table);
         }
 
-        public List<Task> GetAll()
+        public List<Task_Entity> GetAll()
         {
             return _dal.GetAll();
         }
 
-        public List<Task> GetAllUncompletedTasks()
+        public List<Task_Entity> GetAllUncompletedTasks()
         {
             return _dal.GetAllUncompletedTasks();
         }
 
-        public Task GetById(int id)
+        public Task_Entity GetById(int id)
         {
             return _dal.GetById(id);
         }
 
-        public void Remove(Task table)
+        public void Remove(Task_Entity table)
         {
             _dal.Remove(table);
         }
 
-        public void Update(Task table)
+        public void Update(Task_Entity table)
         {
             _dal.Update(table);
         }

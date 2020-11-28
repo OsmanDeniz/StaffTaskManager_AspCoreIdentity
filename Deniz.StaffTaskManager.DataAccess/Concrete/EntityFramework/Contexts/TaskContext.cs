@@ -23,7 +23,7 @@ namespace Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Contexts
             builder.ApplyConfiguration(new AppUserMap());
             base.OnModelCreating(builder);
         }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Task_Entity> Tasks { get; set; }
         public DbSet<Urgency> Urgencies { get; set; }
         public DbSet<Report> Reports { get; set; }
     }

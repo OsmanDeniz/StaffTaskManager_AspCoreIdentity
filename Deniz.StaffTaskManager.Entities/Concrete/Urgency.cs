@@ -9,6 +9,6 @@ namespace Deniz.StaffTaskManager.Entities.Concrete
         public int Id { get; set; }
         public string UrgencyLevel { get; set; }
 
-        public List<Task> Tasks { get; set; }
+        public List<Task_Entity> Tasks { get; set; }
     }
 }

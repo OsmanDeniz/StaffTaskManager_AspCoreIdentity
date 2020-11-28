@@ -4,7 +4,7 @@ using Deniz.StaffTaskManager.Entities.Interfaces;
 
 namespace Deniz.StaffTaskManager.Entities.Concrete
 {
-    public class Task : ITable
+    public class Task_Entity : ITable
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Mapping
 {
-    public class TaskMap : IEntityTypeConfiguration<Task>
+    public class TaskMap : IEntityTypeConfiguration<Task_Entity>
     {
-        public void Configure(EntityTypeBuilder<Task> builder)
+        public void Configure(EntityTypeBuilder<Task_Entity> builder)
         {
             builder.HasKey(i => i.Id);
             builder.Property(i => i.Id).UseIdentityColumn();
