@@ -8,6 +8,7 @@ namespace Deniz.StaffTaskManager.Entities.Concrete
     {
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string Picture { get; set; }
 
         public List<Task> Tasks { get; set; }
     }

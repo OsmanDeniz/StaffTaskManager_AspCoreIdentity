@@ -18,5 +18,9 @@ namespace Deniz.StaffTaskManager.WebUI.Controllers
         {
             return View();
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
     }
 }
