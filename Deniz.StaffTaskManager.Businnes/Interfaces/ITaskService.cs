@@ -8,5 +8,6 @@ namespace Deniz.StaffTaskManager.Businnes.Interfaces
   public  interface ITaskService : IGenericService<Task_Entity>
     {
         List<Task_Entity> GetAllUncompletedTasks();
+        List<Task_Entity> GetDataWithAllTables();
     }
 }

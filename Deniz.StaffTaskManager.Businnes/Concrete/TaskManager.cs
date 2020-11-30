@@ -35,6 +35,11 @@ namespace Deniz.StaffTaskManager.Businnes.Concrete
             return _dal.GetById(id);
         }
 
+        public List<Task_Entity> GetDataWithAllTables()
+        {
+            return _dal.GetDataWithAllTables();
+        }
+
         public void Remove(Task_Entity table)
         {
             _dal.Remove(table);
