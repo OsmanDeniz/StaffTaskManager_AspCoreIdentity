@@ -7,5 +7,6 @@ namespace Deniz.StaffTaskManager.DataAccess.Interfaces
     {
         List<Task_Entity> GetAllUncompletedTasks();
         List<Task_Entity> GetDataWithAllTables();
+        Task_Entity GetViewById(int id);
     }
 }

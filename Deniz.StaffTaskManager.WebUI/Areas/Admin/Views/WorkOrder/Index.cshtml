@@ -13,6 +13,8 @@
             <td>Olusturulma Tarihi </td>
             <td>Calisan Kullanici </td>
             <td>Aciliyet Durumu </td>
+            <td>Rapor Sayisi</td>
+            <td>Islem</td>
         </tr>
         @foreach (var item in Model)
         {
@@ -33,6 +35,17 @@
                     }
                 </td>
                 <td>@item.Urgency.UrgencyLevel</td>
+                <td>@item.Reports.Count</td>
+                <td>
+                    @if (item.AppUser == null)
+                    {
+                    <a asp-action="StaffAssign" asp-route-id="@item.Id" class="btn btn-info btn-sm">Personel Ata</a>
+                    }
+                    else
+                    {
+                    <a asp-action="TaskDetails" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detay Goster</a>
+                    }
+                </td>
             </tr>
         }
     </table>

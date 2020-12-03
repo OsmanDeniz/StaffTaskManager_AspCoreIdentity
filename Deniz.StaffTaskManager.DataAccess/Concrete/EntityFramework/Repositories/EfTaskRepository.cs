@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Repositories
 {
-    public class EfTaskRepository : EfGenericRepository<Task_Entity>, ITaskDal 
+    public class EfTaskRepository : EfGenericRepository<Task_Entity>, ITaskDal
     {
         public List<Task_Entity> GetAllUncompletedTasks()
         {
@@ -23,8 +23,16 @@ namespace Deniz.StaffTaskManager.DataAccess.Concrete.EntityFramework.Repositorie
             using (var context = new TaskContext())
             {
                 return context.Tasks.Include(i => i.Urgency)
-                    .Include(i=>i.Reports).Include(i => i.AppUser)
+                    .Include(i => i.Reports).Include(i => i.AppUser)
                     .Where(i => !i.Status).OrderByDescending(i => i.Created_Date).ToList();
+            }
+        }
+
+        public Task_Entity GetViewById(int id)
+        {
+            using (var context = new TaskContext())
+            {
+                return context.Tasks.Include(i => i.Urgency).FirstOrDefault(I => !I.Status && I.Id == id);
             }
         }
     }
