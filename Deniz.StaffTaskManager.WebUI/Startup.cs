@@ -24,12 +24,14 @@ namespace Deniz.StaffTaskManager.WebUI
             services.AddScoped<ITaskService, TaskManager>();
             services.AddScoped<IUrgencyService, UrgencyManager>();
             services.AddScoped<IReportService, ReportManager>();
+            services.AddScoped<IAppUserService, AppUserManager>();
 
             /// DI icin manager icerisinde DAL'lari kullanabilmek icin onlari da  
             /// belirtmem gerekiyor.
             services.AddScoped<ITaskDal, EfTaskRepository>();
             services.AddScoped<IUrgencyDAL, EfUrgencyRepository>();
             services.AddScoped<IReportDAL, EfReportRepository>();
+            services.AddScoped<IAppUserDAL, EfAppUserRepository>();
 
             /// Diger ayarlar,
             /// - DbContext ayari

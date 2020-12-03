@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Deniz.StaffTaskManager.Businnes.Interfaces;
 using Deniz.StaffTaskManager.Entities.Concrete;
 using Deniz.StaffTaskManager.WebUI.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UrgencyController : Controller
     {
         private readonly IUrgencyService _urgencyService;

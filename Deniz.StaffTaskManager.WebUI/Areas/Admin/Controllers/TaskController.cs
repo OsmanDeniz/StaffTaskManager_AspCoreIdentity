@@ -3,6 +3,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Deniz.StaffTaskManager.Businnes.Interfaces;
 using Deniz.StaffTaskManager.Entities.Concrete;
 using Deniz.StaffTaskManager.WebUI.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Deniz.StaffTaskManager.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class TaskController : Controller
     {
         private readonly ITaskService _taskService;
